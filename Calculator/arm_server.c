@@ -52,6 +52,9 @@ divide_1_svc(pair *argp, struct svc_req *rqstp)
 	static float  result;
 
 	printf("divide function called\n");
+	printf("inputs %f, %f\n",argp->a , argp->b );
+
+	result = argp->a / argp->b ;
 
 	return &result;
 }

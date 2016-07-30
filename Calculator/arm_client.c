@@ -102,7 +102,7 @@ multiply_prog_1(char *host, float num1 , float num2)
 
 
 void
-divide_prog_1(char *host)
+divide_prog_1(char *host , float num1 ,  float num2)
 {
 	CLIENT *clnt;
 	float  *result_1;
@@ -116,9 +116,15 @@ divide_prog_1(char *host)
 	}
 #endif	/* DEBUG */
 
+	divide_1_arg.a = num1 ;
+	divide_1_arg.b = num2 ;
 	result_1 = divide_1(&divide_1_arg, clnt);
 	if (result_1 == (float *) NULL) {
 		clnt_perror (clnt, "call failed");
+	}
+	else
+	{
+		printf("division result %f\n",*result_1 );
 	}
 #ifndef	DEBUG
 	clnt_destroy (clnt);
@@ -163,7 +169,7 @@ main (int argc, char *argv[])
 		break ;
 			
 		case 4:
-			divide_prog_1 (host);
+			divide_prog_1 (host, num1 ,num2);
 		break ;
 
 		case 5:
