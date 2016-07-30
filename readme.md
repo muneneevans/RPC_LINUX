@@ -9,6 +9,7 @@ This is a compliation of sample programs that implement rpc middleware
 
 before running the programs, install rpcinfo and portmap
 
+
 **COMPONENTS**
 **************************************************************
 
@@ -23,6 +24,7 @@ String: sending of string values between server and client
 Combined: collection of addition , multiplication and sending of string
 
 Calculator: A combination of addition, subtraction, multiplication and division. This uses float values
+
 
 **COMPILATION**
 **************************************************************
