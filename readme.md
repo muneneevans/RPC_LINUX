@@ -1,17 +1,20 @@
-**RPC ON LINUX**
 **************************************************************
+**RPC ON LINUX**
+
 
 This is a compliation of sample programs that implement rpc middleware
 
 
-**INSTALLATION**
 **************************************************************
+**INSTALLATION**
+
 
 before running the programs, install rpcinfo and portmap
 
 
-**COMPONENTS**
 **************************************************************
+**COMPONENTS**
+
 
 There are 5 code samples
 
@@ -26,8 +29,9 @@ Combined: collection of addition , multiplication and sending of string
 Calculator: A combination of addition, subtraction, multiplication and division. This uses float values
 
 
-**COMPILATION**
 **************************************************************
+**COMPILATION**
+
 
 in each folder is an exectuable for the server and client
 
