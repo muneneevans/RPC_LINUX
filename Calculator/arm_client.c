@@ -21,16 +21,16 @@ add_prog_1(char *host, float num1 , float num2)
 		exit (1);
 	}
 #endif	/* DEBUG */
-
-	add_1_arg.a = 20.0 ;
-	add_1_arg.b = 30.0 ;
+	
+	add_1_arg.a = num1 ;
+	add_1_arg.b = num2 ;
 	result_1 = add_1(&add_1_arg, clnt);
 	if (result_1 == (float *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
 	else
 	{
-		printf("result %f\n",*result_1 );
+		printf("addition result %f\n",*result_1 );
 	}
 #ifndef	DEBUG
 	clnt_destroy (clnt);
@@ -39,7 +39,7 @@ add_prog_1(char *host, float num1 , float num2)
 
 
 void
-sub_prog_1(char *host)
+sub_prog_1(char *host, float num1 , float num2)
 {
 	CLIENT *clnt;
 	float  *result_1;
@@ -51,11 +51,18 @@ sub_prog_1(char *host)
 		clnt_pcreateerror (host);
 		exit (1);
 	}
+	
 #endif	/* DEBUG */
 
+	sub_1_arg.a = num1 ; 
+	sub_1_arg.b = num2 ;
 	result_1 = sub_1(&sub_1_arg, clnt);
 	if (result_1 == (float *) NULL) {
 		clnt_perror (clnt, "call failed");
+	}
+	else
+	{
+		printf("subtractions result %f\n",*result_1 );
 	}
 #ifndef	DEBUG
 	clnt_destroy (clnt);
@@ -117,15 +124,53 @@ int
 main (int argc, char *argv[])
 {
 	char *host;
+	int option;
+	float num1 , num2;
 
 	if (argc < 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
 	host = argv[1];
-	add_prog_1 (host, 20,30 );
-	sub_prog_1 (host);
-	multiply_prog_1 (host);
-	divide_prog_1 (host);
+
+	menu:
+	printf("\n please select and option \n1: Addition\n2: Subtraction\n3: Multiplication\n4: Division\n5: Exit\n");
+	scanf("%d", &option);
+	printf("\nEnter first number: ");
+	scanf("%f" , &num1);
+	printf("\nEnter first number: ");
+	scanf("%f" , &num2);
+
+
+	switch(option)
+	{
+		case 1:
+			add_prog_1 (host, num1,num2 );
+		break ;
+
+		case 2:
+			sub_prog_1 (host, num1 , num2);
+		break ;
+
+		case 3:
+			multiply_prog_1 (host);
+		break ;
+			
+		case 4:
+			divide_prog_1 (host);
+		break ;
+
+		case 5:
+			exit(0);
+		break ;
+
+		default :
+			goto menu;
+		break ;
+
+	}
+	goto menu;
+	
+	
 exit (0);
 }

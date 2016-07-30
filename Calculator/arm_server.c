@@ -11,8 +11,9 @@ add_1_svc(pair *argp, struct svc_req *rqstp)
 {
 	static float  result;
 
-	printf("server function called\n");	
+	printf("add function called\n");	
 	printf("inputs %f, %f\n",argp->a , argp->b );
+
 
 	result = argp->a + argp->b ;
 	
@@ -24,9 +25,11 @@ sub_1_svc(pair *argp, struct svc_req *rqstp)
 {
 	static float  result;
 
-	/*
-	 * insert server code here
-	 */
+	printf("subtract function called\n");
+	printf("inputs %f, %f\n",argp->a , argp->b );
+
+
+	result = argp->a - argp->b ;
 
 	return &result;
 }
@@ -36,9 +39,7 @@ multiply_1_svc(pair *argp, struct svc_req *rqstp)
 {
 	static float  result;
 
-	/*
-	 * insert server code here
-	 */
+	printf("multiply function called\n");
 
 	return &result;
 }
@@ -48,9 +49,7 @@ divide_1_svc(pair *argp, struct svc_req *rqstp)
 {
 	static float  result;
 
-	/*
-	 * insert server code here
-	 */
+	printf("divide function called\n");
 
 	return &result;
 }
