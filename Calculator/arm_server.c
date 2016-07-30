@@ -40,7 +40,9 @@ multiply_1_svc(pair *argp, struct svc_req *rqstp)
 	static float  result;
 
 	printf("multiply function called\n");
+	printf("inputs %f, %f\n",argp->a , argp->b );
 
+	result = argp->a * argp->b ;
 	return &result;
 }
 

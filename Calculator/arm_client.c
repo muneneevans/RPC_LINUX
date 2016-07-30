@@ -71,7 +71,7 @@ sub_prog_1(char *host, float num1 , float num2)
 
 
 void
-multiply_prog_1(char *host)
+multiply_prog_1(char *host, float num1 , float num2)
 {
 	CLIENT *clnt;
 	float  *result_1;
@@ -85,9 +85,15 @@ multiply_prog_1(char *host)
 	}
 #endif	/* DEBUG */
 
+	multiply_1_arg.a = num1 ; 
+	multiply_1_arg.b = num2 ; 
 	result_1 = multiply_1(&multiply_1_arg, clnt);
 	if (result_1 == (float *) NULL) {
 		clnt_perror (clnt, "call failed");
+	}
+	else
+	{
+		printf("multiplication result %f\n",*result_1 );
 	}
 #ifndef	DEBUG
 	clnt_destroy (clnt);
@@ -153,7 +159,7 @@ main (int argc, char *argv[])
 		break ;
 
 		case 3:
-			multiply_prog_1 (host);
+			multiply_prog_1 (host, num1 , num2);
 		break ;
 			
 		case 4:
